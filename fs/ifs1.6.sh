@@ -238,6 +238,36 @@ do
 done
 
 
+echo "am"
+
+rm -f am.zone
+curl -o am.zone https://www.ipdeny.com/ipblocks/data/countries/am.zone
+for i in `cat am.zone`
+do
+    ipset add access $i 
+done
+
+
+echo "ge"
+
+rm -f ge.zone
+curl -o ge.zone https://www.ipdeny.com/ipblocks/data/countries/ge.zone
+for i in `cat ge.zone`
+do
+    ipset add access $i 
+done
+
+
+echo "ua"
+
+rm -f ua.zone
+curl -o ua.zone https://www.ipdeny.com/ipblocks/data/countries/ua.zone
+for i in `cat ua.zone`
+do
+    ipset add access $i 
+done
+
+
 rm -rf /etc/sysconfig/iptables
 
 tee /etc/sysconfig/iptables <<-'EOF'
@@ -254,14 +284,14 @@ tee /etc/sysconfig/iptables <<-'EOF'
 -A INPUT -m set --match-set access src -p tcp --dport 9998 -j ACCEPT
 -A INPUT -m set --match-set access src -p tcp --dport 9066 -j ACCEPT
 -A INPUT -m set --match-set access src -p tcp --dport 9443 -j ACCEPT
--A INPUT -m set --match-set access src -p tcp --dport 9906 -j ACCEPT
+-A INPUT -m set --match-set access src -p tcp --dport 9905 -j ACCEPT
 -A INPUT -m set --match-set access src -p tcp --dport 9908 -j ACCEPT
 -A INPUT -m set --match-set access src -p tcp --dport 5081 -j ACCEPT
 -A INPUT -m set --match-set access src -p tcp --dport 5061 -j ACCEPT
 -A INPUT -m set --match-set access src -p tcp --dport 8099 -j ACCEPT
 -A INPUT -m set --match-set access src -p tcp --dport 5002 -j ACCEPT
 -A INPUT -m set --match-set access src -p udp --dport 5003 -j ACCEPT
--A INPUT -m set --match-set access src -p udp --dport 9906 -j ACCEPT
+-A INPUT -m set --match-set access src -p udp --dport 9905 -j ACCEPT
 -A INPUT -m set --match-set access src -p udp --dport 9908 -j ACCEPT
 -A INPUT -p udp --dport 3478 -j ACCEPT
 -A INPUT -p udp --dport 3479 -j ACCEPT
@@ -330,6 +360,37 @@ for i in `cat my.zone`
 do
     ipset add access $i 
 done
+
+
+echo "am"
+
+rm -f am.zone
+curl -o am.zone https://www.ipdeny.com/ipblocks/data/countries/am.zone
+for i in `cat am.zone`
+do
+    ipset add access $i 
+done
+
+
+echo "ge"
+
+rm -f ge.zone
+curl -o ge.zone https://www.ipdeny.com/ipblocks/data/countries/ge.zone
+for i in `cat ge.zone`
+do
+    ipset add access $i 
+done
+
+
+echo "ua"
+
+rm -f ua.zone
+curl -o ua.zone https://www.ipdeny.com/ipblocks/data/countries/ua.zone
+for i in `cat ua.zone`
+do
+    ipset add access $i 
+done
+
 
 EOF
 
