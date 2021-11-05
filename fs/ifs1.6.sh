@@ -8,7 +8,7 @@ cd /usr/local/src
 # yum -y update
 yum -y install iptables iptables-services
 # yum -y install jwhois bind-utils tmux mtr traceroute tcpdump tshark 
-yum -y instal rpcbind nfs
+yum -y install rpcbind nfs
 yum -y install iftop nload
 yum -y install ipset
 
@@ -27,7 +27,7 @@ yum install -y gcc-c++ alsa-lib-devel autoconf automake bison bzip2 curl-devel e
 
 #git clone -b v1.6 https://github.com/ops-spanbrain/freeswitch.git freeswitch
 
-git clone -b v1.6 git@github.com:signalwire/freeswitch.git freeswitch
+git clone -b v1.6 https://github.com/signalwire/freeswitch.git freeswitch
 
 chmod -R 777 /usr/local/src/freeswitch
 
@@ -96,7 +96,9 @@ make mod_xml_curl-install
 #install cdr
 
 sed -i 's/#event_handlers\/mod_format_cdr/event_handlers\/mod_format_cdr/g' /usr/local/src/freeswitch/modules.conf
+
 ./configure
+
 make mod_format_cdr-install
 
 #install xml g729
