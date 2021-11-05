@@ -2,30 +2,12 @@
 
 cd /usr/local/src
 
-# yum clean all 
-# yum makecache
-# yum -y install epel-release 
-# yum -y update
-yum -y install iptables iptables-services
-# yum -y install jwhois bind-utils tmux mtr traceroute tcpdump tshark 
-yum -y install rpcbind nfs
-yum -y install iftop nload
-yum -y install ipset
-
-systemctl enable rpcbind
-systemctl enable nfs
-systemctl enable iptables
-
-wget -qO- https://raw.githubusercontent.com/ops-spanbrain/tools/main/igit.sh | bash && source /etc/bashrc && git --version
-
 yum install -y http://files.freeswitch.org/freeswitch-release-1-6.noarch.rpm epel-release
  
 yum install -y alsa-lib-devel autoconf automake bison broadvoice-devel bzip2 curl-devel libdb4-devel e2fsprogs-devel erlang flite-devel g722_1-devel gcc-c++ gdbm-devel gnutls-devel ilbc2-devel ldns-devel libcodec2-devel libcurl-devel libedit-devel libidn-devel libjpeg-devel libmemcached-devel libogg-devel libsilk-devel libsndfile-devel libtheora-devel libtiff-devel libtool libuuid-devel libvorbis-devel libxml2-devel lua-devel lzo-devel mongo-c-driver-devel ncurses-devel net-snmp-devel openssl-devel opus-devel pcre-devel perl perl-ExtUtils-Embed pkgconfig portaudio-devel postgresql-devel python-devel python-devel soundtouch-devel speex-devel sqlite-devel unbound-devel unixODBC-devel wget which yasm zlib-devel libshout-devel libmpg123-devel lame-devel
 
 yum install -y gcc-c++ alsa-lib-devel autoconf automake bison bzip2 curl-devel e2fsprogs-devel flite-devel gdbm-devel gnutls-devel ldns-devel libcurl-devel libedit-devel libidn-devel libjpeg-devel libmemcached-devel libogg-devel libsndfile-devel libtiff-devel libtheora-devel libtool libvorbis-devel libxml2-devel lua-devel lzo-devel mongo-c-driver-devel ncurses-devel net-snmp-devel openssl-devel opus-devel pcre-devel perl perl-ExtUtils-Embed pkgconfig portaudio-devel postgresql-devel python-devel soundtouch-devel speex-devel sqlite-devel unbound-devel unixODBC-devel libuuid-devel which yasm zlib-devel
 
-
-#git clone -b v1.6 https://github.com/ops-spanbrain/freeswitch.git freeswitch
 
 git clone -b v1.6 https://github.com/signalwire/freeswitch.git freeswitch
 
@@ -215,7 +197,7 @@ echo "access"
 
 echo "philippines"
 rm -f ph.zone
-curl -o ph.zone https://www.ipdeny.com/ipblocks/data/countries/ph.zone
+wget --no-check-certificate -O ph.zone https://www.ipdeny.com/ipblocks/data/countries/ph.zone
 for i in `cat ph.zone`
 do
     ipset add access $i 
@@ -224,7 +206,7 @@ done
 echo "taiwan"
 
 rm -f tw.zone
-curl -o tw.zone https://www.ipdeny.com/ipblocks/data/countries/tw.zone
+wget --no-check-certificate -O tw.zone https://www.ipdeny.com/ipblocks/data/countries/tw.zone
 for i in `cat tw.zone`
 do
     ipset add access $i 
@@ -233,7 +215,7 @@ done
 echo "thai"
 
 rm -f th.zone
-curl -o th.zone https://www.ipdeny.com/ipblocks/data/countries/th.zone
+wget --no-check-certificate -O th.zone https://www.ipdeny.com/ipblocks/data/countries/th.zone
 for i in `cat th.zone`
 do
     ipset add access $i 
@@ -243,7 +225,7 @@ done
 echo "am"
 
 rm -f am.zone
-curl -o am.zone https://www.ipdeny.com/ipblocks/data/countries/am.zone
+wget --no-check-certificate -O am.zone https://www.ipdeny.com/ipblocks/data/countries/am.zone
 for i in `cat am.zone`
 do
     ipset add access $i 
@@ -253,7 +235,7 @@ done
 echo "ge"
 
 rm -f ge.zone
-curl -o ge.zone https://www.ipdeny.com/ipblocks/data/countries/ge.zone
+wget --no-check-certificate -O ge.zone https://www.ipdeny.com/ipblocks/data/countries/ge.zone
 for i in `cat ge.zone`
 do
     ipset add access $i 
@@ -263,7 +245,7 @@ done
 echo "ua"
 
 rm -f ua.zone
-curl -o ua.zone https://www.ipdeny.com/ipblocks/data/countries/ua.zone
+wget --no-check-certificate -O ua.zone https://www.ipdeny.com/ipblocks/data/countries/ua.zone
 for i in `cat ua.zone`
 do
     ipset add access $i 
@@ -331,7 +313,7 @@ ipset create access hash:net hashsize 10000 maxelem 20000000
 
 echo "philippines"
 rm -f ph.zone
-curl -o ph.zone https://www.ipdeny.com/ipblocks/data/countries/ph.zone
+wget --no-check-certificate -O ph.zone https://www.ipdeny.com/ipblocks/data/countries/ph.zone
 for i in `cat ph.zone`
 do
     ipset add access $i 
@@ -340,7 +322,7 @@ done
 echo "taiwan"
 
 rm -f tw.zone
-curl -o tw.zone https://www.ipdeny.com/ipblocks/data/countries/tw.zone
+wget --no-check-certificate -O tw.zone https://www.ipdeny.com/ipblocks/data/countries/tw.zone
 for i in `cat tw.zone`
 do
     ipset add access $i 
@@ -349,7 +331,7 @@ done
 echo "thai"
 
 rm -f th.zone
-curl -o th.zone https://www.ipdeny.com/ipblocks/data/countries/th.zone
+wget --no-check-certificate -O th.zone https://www.ipdeny.com/ipblocks/data/countries/th.zone
 for i in `cat th.zone`
 do
     ipset add access $i 
@@ -357,7 +339,7 @@ done
 
 
 rm -f my.zone
-curl -o my.zone https://www.ipdeny.com/ipblocks/data/countries/my.zone
+wget --no-check-certificate -O my.zone https://www.ipdeny.com/ipblocks/data/countries/my.zone
 for i in `cat my.zone`
 do
     ipset add access $i 
@@ -367,7 +349,7 @@ done
 echo "am"
 
 rm -f am.zone
-curl -o am.zone https://www.ipdeny.com/ipblocks/data/countries/am.zone
+wget --no-check-certificate -O am.zone https://www.ipdeny.com/ipblocks/data/countries/am.zone
 for i in `cat am.zone`
 do
     ipset add access $i 
@@ -377,7 +359,7 @@ done
 echo "ge"
 
 rm -f ge.zone
-curl -o ge.zone https://www.ipdeny.com/ipblocks/data/countries/ge.zone
+wget --no-check-certificate -O ge.zone https://www.ipdeny.com/ipblocks/data/countries/ge.zone
 for i in `cat ge.zone`
 do
     ipset add access $i 
@@ -387,7 +369,7 @@ done
 echo "ua"
 
 rm -f ua.zone
-curl -o ua.zone https://www.ipdeny.com/ipblocks/data/countries/ua.zone
+wget --no-check-certificate -O ua.zone https://www.ipdeny.com/ipblocks/data/countries/ua.zone
 for i in `cat ua.zone`
 do
     ipset add access $i 
