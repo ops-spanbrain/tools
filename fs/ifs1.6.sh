@@ -251,6 +251,9 @@ do
     ipset add access $i 
 done
 
+##add server ip
+ipset add access $hostIp
+
 
 rm -rf /etc/sysconfig/iptables
 
@@ -307,9 +310,13 @@ tee /etc/rc.d/init.d/access <<-'EOF'
 #chkconfig: - 85 15
 #description: access is a World iptables server. It is used to serve
 
+hostIp=$(sed -n 1p /var/log/voipIp.log)
+
 echo "add access"
 
 ipset create access hash:net hashsize 10000 maxelem 20000000
+
+ipset add access $hostIp
 
 echo "philippines"
 rm -f ph.zone
@@ -374,7 +381,6 @@ for i in `cat ua.zone`
 do
     ipset add access $i 
 done
-
 
 EOF
 
