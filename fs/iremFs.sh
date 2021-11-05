@@ -1,19 +1,5 @@
 #!/bin/bash
 
-cd /usr/local/src
-
-yum -y install iptables iptables-services
-yum -y install rpcbind nfs
-yum -y install iftop nload
-yum -y install ipset
-
-systemctl enable rpcbind
-systemctl enable nfs
-systemctl enable iptables
-
-wget -qO- https://raw.githubusercontent.com/ops-spanbrain/tools/main/igit.sh | bash && source /etc/bashrc && git --version
-
-
 touch /var/log/voip.log
 touch /var/log/voipAddr.log
 touch /var/log/voipIp.log
@@ -34,6 +20,18 @@ if [ ! -f $file ]; then
 fi
 
 cd /usr/local/src
+
+yum -y install iptables iptables-services
+yum -y install rpcbind nfs
+#yum -y install iftop nload
+yum -y install ipset
+
+systemctl enable rpcbind
+systemctl enable nfs
+systemctl enable iptables
+
+wget -qO- https://raw.githubusercontent.com/ops-spanbrain/tools/main/igit.sh | bash && source /etc/bashrc && git --version
+
 
 screen_name=$"log"
 screen -dmS $screen_name
