@@ -58,3 +58,21 @@ EOF
 
 
 
+tee /etc/nginx/conf.d/default.conf <<-'EOF'
+server {
+    server_name _;
+    listen 80 default_server;
+    listen 443 ssl default_server;
+
+    ## To also support IPv6, uncomment this block
+    # listen [::]:80 default_server;
+    # listen [::]:443 ssl default_server;
+
+    #ssl_certificate <path to cert>;
+    #ssl_certificate_key <path to key>;
+    return 444; # or whatever
+}
+EOF
+
+
+
