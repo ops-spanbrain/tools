@@ -38,7 +38,7 @@ http{
   client_max_body_size 50m;
   send_timeout    600;
   keepalive_timeout 60;
-  autoindex off;
+  #autoindex off;
   server_tokens off;
 
   gzip on;
@@ -62,7 +62,7 @@ tee /etc/nginx/conf.d/default.conf <<-'EOF'
 server {
     server_name _;
     listen 80 default_server;
-    listen 443 ssl default_server;
+    #listen 443 ssl default_server;
 
     ## To also support IPv6, uncomment this block
     # listen [::]:80 default_server;

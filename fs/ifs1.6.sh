@@ -117,34 +117,34 @@ echo $hostIp
 FSCONFDIR="/usr/local/freeswitch/conf"
 
 rm -rf $FSCONFDIR/vars.xml
-curl -o $FSCONFDIR/vars.xml "$serverAddr/init/$serverId/vars"
+curl -o $FSCONFDIR/vars.xml "$serverAddr/fs/init/$serverId/vars"
 
 rm -rf $FSCONFDIR/autoload_configs/modules.conf.xml
-curl -o $FSCONFDIR/autoload_configs/modules.conf.xml "$serverAddr/init/$serverId/modules"
+curl -o $FSCONFDIR/autoload_configs/modules.conf.xml "$serverAddr/fs/init/$serverId/modules"
 
 rm -rf $FSCONFDIR/autoload_configs/format_cdr.conf.xml
-curl -o $FSCONFDIR/autoload_configs/format_cdr.conf.xml "$serverAddr/init/$serverId/cdr"
+curl -o $FSCONFDIR/autoload_configs/format_cdr.conf.xml "$serverAddr/fs/init/$serverId/cdr"
 
 rm -rf $FSCONFDIR/autoload_configs/xml_curl.conf.xml
-curl -o $FSCONFDIR/autoload_configs/xml_curl.conf.xml "$serverAddr/init/$serverId/curl"
+curl -o $FSCONFDIR/autoload_configs/xml_curl.conf.xml "$serverAddr/fs/init/$serverId/curl"
 
 rm -rf $FSCONFDIR/autoload_configs/event_socket.conf.xml
-curl -o $FSCONFDIR/autoload_configs/event_socket.conf.xml "$serverAddr/init/$serverId/es"
+curl -o $FSCONFDIR/autoload_configs/event_socket.conf.xml "$serverAddr/fs/init/$serverId/es"
 
 rm -rf $FSCONFDIR/autoload_configs/acl.conf.xml
-curl -o $FSCONFDIR/autoload_configs/acl.conf.xml "$serverAddr/init/$serverId/acl"
+curl -o $FSCONFDIR/autoload_configs/acl.conf.xml "$serverAddr/fs/init/$serverId/acl"
 
 rm -rf $FSCONFDIR/autoload_configs/switch.conf.xml
-curl -o $FSCONFDIR/autoload_configs/switch.conf.xml "$serverAddr/init/$serverId/switch"
+curl -o $FSCONFDIR/autoload_configs/switch.conf.xml "$serverAddr/fs/init/$serverId/switch"
 
 rm -rf $FSCONFDIR/directory/default.xml
-curl -o $FSCONFDIR/directory/default.xml "$serverAddr/init/$serverId/directoryDefault"
+curl -o $FSCONFDIR/directory/default.xml "$serverAddr/fs/init/$serverId/directoryDefault"
 
 rm -rf $FSCONFDIR/sip_profiles/external.xml
-curl -o $FSCONFDIR/sip_profiles/external.xml "$serverAddr/init/$serverId/sipExternal"
+curl -o $FSCONFDIR/sip_profiles/external.xml "$serverAddr/fs/init/$serverId/sipExternal"
 
 rm -rf $FSCONFDIR/sip_profiles/internal.xml
-curl -o $FSCONFDIR/sip_profiles/internal.xml "$serverAddr/init/$serverId/sipInternal"
+curl -o $FSCONFDIR/sip_profiles/internal.xml "$serverAddr/fs/init/$serverId/sipInternal"
 
 echo "mkdir recordings"
 
