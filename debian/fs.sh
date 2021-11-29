@@ -260,3 +260,7 @@ chown -R www-data /usr/local/ops/ctx
 cd /etc/nginx/conf
 
 curl -o rtc.conf "$serverAddr/fs/init/$serverId/nginx"
+
+cd /usr/local/brain
+
+wget --no-check-certificate -O fsclient https://my.spanpeak.com/dow/faclient
