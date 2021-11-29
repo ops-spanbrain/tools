@@ -97,11 +97,7 @@ chmod ugo+x /etc/systemd/system/freeswitch.service
 
 systemctl --system daemon-reload
 
-systemctl start freeswitch.service
-systemctl enable freeswitch.service
-
-
-cd /usr/local/src/freeswitch
+cd /usr/local/src
 
 # cd /usr/local
 # useradd --system --home-dir /usr/local/freeswitch -G daemon freeswitch
@@ -166,6 +162,10 @@ showmount -e localhost
 
 curl -s "$serverAddr/fs/init/$serverId/install"
 
+cd /etc/nginx/conf
+
+curl -o /etc/nginx/conf/rtc.conf "$serverAddr/fs/init/$serverId/nginx"
+
 echo "install done"
 
 echo "set network"
@@ -173,8 +173,6 @@ echo "set network"
 mkdir -p /usr/local/brain
 
 cd /usr/local/brain
-
-#curl -s https://raw.githubusercontent.com/ops-spanbrain/tools/main/debian/access.sh | bash
 
 curl -o access.sh https://raw.githubusercontent.com/ops-spanbrain/tools/main/debian/access.sh
 
@@ -226,14 +224,14 @@ chmod +x /usr/local/brain/iptables.rules
 
 tee /etc/network/if-pre-up.d/iptables <<-'EOF'
 #!/bin/sh
-/sbin/iptables-restore < /usr/local/brain/iptables.rules
 /usr/bin/bash /usr/local/brain/access.sh
+/sbin/iptables-restore < /usr/local/brain/iptables.rules
+/usr/bin/fsclient start
 EOF
 
 chmod +x /etc/network/if-pre-up.d/iptables
 
 /sbin/iptables-restore < /usr/local/brain/iptables.rules
-/usr/bin/bash /usr/local/brain/access.sh
 
 echo "all start server"
 
@@ -242,12 +240,8 @@ systemctl enable nfs-kernel-server
 
 systemctl start freeswitch.service
 systemctl enable freeswitch.service
-#systemctl status freeswitch.service
 
-systemctl start iptables
-systemctl status iptables
-
-#iptables -L -n
+iptables -L -n
 
 echo "init auth start"
 
@@ -256,10 +250,6 @@ cd /usr/local/ops
 git clone https://github.com/ops-spanbrain/ctx.git
 
 chown -R www-data /usr/local/ops/ctx
-
-cd /etc/nginx/conf
-
-curl -o rtc.conf "$serverAddr/fs/init/$serverId/nginx"
 
 cd /usr/local/brain
 
@@ -278,4 +268,3 @@ cd /usr/local/freeswitch/voice
 wget --no-check-certificate -O NumberDoesNotExist.wav https://github.com/ops-spanbrain/tools/raw/main/dow/voice/NumberDoesNotExist.wav
 wget --no-check-certificate -O insufficientBalance.wav https://github.com/ops-spanbrain/tools/raw/main/dow/voice/insufficientBalance.wav
 wget --no-check-certificate -O sipCrowded.wav https://github.com/ops-spanbrain/tools/raw/main/dow/voice/sipCrowded.wav
-

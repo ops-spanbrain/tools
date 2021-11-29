@@ -19,9 +19,15 @@ if [ ! -f $file ]; then
  apt-get -y install screen 
 fi
 
+apt-get update -y
+apt-get install -yq gnupg2 lsb-release vim git screen
+
+
 cd /usr/local/src
 
-apt-get -y install ipset nfs-kernel-server
+apt-get -y install ipset nfs-kernel-server 
+apt-get -y install snapd
+snap install --classic certbot
 
 curl -s https://raw.githubusercontent.com/ops-spanbrain/tools/main/debian/nginx.sh | bash
 
