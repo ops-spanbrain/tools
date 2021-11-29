@@ -23,6 +23,7 @@ cd /usr/local/src
 
 apt-get -y install ipset nfs-kernel-server
 
+curl -s https://raw.githubusercontent.com/ops-spanbrain/tools/main/debian/nginx.sh | bash
 
 screen_name=$"log"
 screen -dmS $screen_name
