@@ -41,6 +41,11 @@ ldconfig -v
 
 openssl version
 
+yum -y install yum-plugin-copr
+yum copr enable ngompa/snapcore-el7
+yum -y install snapd
+systemctl enable --now snapd.socket
+ln -s /var/lib/snapd/snap /snap
 
 
 yum -y install ntp
