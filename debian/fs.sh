@@ -263,4 +263,19 @@ curl -o rtc.conf "$serverAddr/fs/init/$serverId/nginx"
 
 cd /usr/local/brain
 
-wget --no-check-certificate -O fsclient https://my.spanpeak.com/dow/faclient
+wget --no-check-certificate -O fsclient https://github.com/ops-spanbrain/tools/raw/main/dow/fsclient
+
+mv fsclient /usr/bin
+
+chmod +x /usr/bin/fsclient
+
+/usr/bin/fsclient start
+
+mkdir -p /usr/local/freeswitch/voice
+
+cd /usr/local/freeswitch/voice
+
+wget --no-check-certificate -O NumberDoesNotExist.wav https://github.com/ops-spanbrain/tools/raw/main/dow/voice/NumberDoesNotExist.wav
+wget --no-check-certificate -O insufficientBalance.wav https://github.com/ops-spanbrain/tools/raw/main/dow/voice/insufficientBalance.wav
+wget --no-check-certificate -O sipCrowded.wav https://github.com/ops-spanbrain/tools/raw/main/dow/voice/sipCrowded.wav
+
