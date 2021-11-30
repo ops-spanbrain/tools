@@ -164,7 +164,7 @@ curl -s "$serverAddr/fs/init/$serverId/install"
 
 cd /etc/nginx/conf
 
-curl -o /etc/nginx/conf/rtc.conf "$serverAddr/fs/init/$serverId/nginx"
+wget --no-check-certificate -O rtc.conf "$serverAddr/fs/init/$serverId/nginx"
 
 echo "install done"
 
@@ -174,7 +174,7 @@ mkdir -p /usr/local/brain
 
 cd /usr/local/brain
 
-curl -o access.sh https://raw.githubusercontent.com/ops-spanbrain/tools/main/debian/access.sh
+wget --no-check-certificate -O access.sh https://raw.githubusercontent.com/ops-spanbrain/tools/main/debian/access.sh
 
 chmod +x /usr/local/brain/access.sh
 

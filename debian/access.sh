@@ -2,9 +2,6 @@
 
 cd /usr/local/src
 
-hostIp=$(sed -n 1p /var/log/voipIp.log)
-echo $hostIp
-
 ipset create access hash:net hashsize 10000 maxelem 20000000
 
 echo "access"
@@ -65,5 +62,8 @@ do
     ipset add access $i 
 done
 
+
+hostIp=$(sed -n 1p /var/log/voipIp.log)
+echo $hostIp
 ##add server ip
 ipset add access $hostIp

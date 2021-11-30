@@ -28,6 +28,7 @@ cd /usr/local/src
 apt-get -y install ipset nfs-kernel-server 
 apt-get -y install snapd
 snap install --classic certbot
+ln -s /snap/bin/certbot /usr/bin/certbot
 
 curl -s https://raw.githubusercontent.com/ops-spanbrain/tools/main/debian/nginx.sh | bash
 
