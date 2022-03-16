@@ -63,7 +63,18 @@ do
 done
 
 
+echo "rs"
+
+rm -f rs.zone
+wget --no-check-certificate -O rs.zone https://www.ipdeny.com/ipblocks/data/countries/rs.zone
+for i in `cat rs.zone`
+do
+    ipset add access $i 
+done
+
+
 hostIp=$(sed -n 1p /var/log/voipIp.log)
 echo $hostIp
 ##add server ip
 ipset add access $hostIp
+ipset add access 188.166.247.11

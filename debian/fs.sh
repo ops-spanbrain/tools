@@ -162,7 +162,7 @@ showmount -e localhost
 
 curl -s "$serverAddr/fs/init/$serverId/install"
 
-cd /etc/nginx/conf
+cd /etc/nginx/conf.d
 
 wget --no-check-certificate -O rtc.conf "$serverAddr/fs/init/$serverId/nginx"
 
