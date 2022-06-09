@@ -266,5 +266,12 @@ mkdir -p /usr/local/freeswitch/voice
 cd /usr/local/freeswitch/voice
 
 wget --no-check-certificate -O NumberDoesNotExist.wav https://github.com/ops-spanbrain/tools/raw/main/dow/voice/NumberDoesNotExist.wav
+
 wget --no-check-certificate -O insufficientBalance.wav https://github.com/ops-spanbrain/tools/raw/main/dow/voice/insufficientBalance.wav
+
 wget --no-check-certificate -O sipCrowded.wav https://github.com/ops-spanbrain/tools/raw/main/dow/voice/sipCrowded.wav
+
+wget --no-check-certificate -O noSubscription.wav https://github.com/ops-spanbrain/tools/raw/main/dow/voice/noSubscription.wav
+
+wget --no-check-certificate -O SubMatchFailed.wav https://github.com/ops-spanbrain/tools/raw/main/dow/voice/SubMatchFailed.wav
+
